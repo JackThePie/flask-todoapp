@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <div class="task-list">
+        {% for task in tasks %}
+        <div class="task">
+            <input type="checkbox" {% if task.is_done %}checked{% endif %}>
+            {{ task.id }}
+            {{ task.content }}
+            {{ task.created_at }}
+            {{ task.is_done }}
+            <a href="{{ url_for('edit_task') }}">Edit</a>
+        </div>
+        {% endfor %}
+    </div>
+    <a href="{{ url_for('create_task') }}">New task</a>
+{% endblock %}
